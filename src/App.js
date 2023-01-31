@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState, useEffect, useRef } from "react";
 import { getBusqueda, getPersojes, getSelecPersonaje } from "./ api /service";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+ 
 
 function App() {
   const buscarpersonaje = useRef(null);
@@ -21,6 +21,10 @@ function App() {
 
   const MostarDetalle = (personaje) => {
     const id = Number(personaje.url.split("/").slice(-2)[0]);
+
+    console.log(personaje);
+
+
     setSelecPersonaje(id);
   };
 
@@ -29,41 +33,47 @@ function App() {
     const text = buscarpersonaje.current.value;
     settextBuscar(text);
   };
+
+
+
   const buscarIntro = (e) => {
     if (e.key !== "Enter") return;
     buscarpersonaje.current.value = "";
     setDetalles({});
-    getBusqueda(textBuscar).then((data) => setPersonaje(data.results));
+   
+   // getBusqueda(textBuscar).then((data) => setPersonaje(data.results));
+    setSelecPersonaje(textBuscar) 
+    
   };
- 
 
   return (
     <div>
-    
-      <select name="" id="">
+      <select>
         {personajes.map((personaje) => (
-          <option key={personaje.name} onClick={() => MostarDetalle(personaje)}>&#xf2be;
+          <option key={personaje.name} onClick={() => MostarDetalle(personaje)}>
+            &#xf2be;
             {personaje.name}
           </option>
-
-            
         ))}
-        
       </select>
 
-  <input
+      <input
         type="text"
         ref={buscarpersonaje}
         onChange={buscar}
         onKeyDown={buscarIntro}
         placeholder="Buscar personaje"
       />
-      
+
       {detalles && (
         <aside>
           <h1>{detalles.name}</h1>
+          <h2>Altura:{detalles.height}</h2>
+          <h3>Masa: {detalles.mass}</h3>
+          <h4> color de pelo: {detalles.hair_color}</h4>
+          <h5> Edad :{detalles.birth_year}</h5>
         </aside>
-      )}
+      )} 
     </div>
   );
 }

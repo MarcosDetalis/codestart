@@ -29,3 +29,6 @@
 .small {
   font-size: 0.75rem;
 }
+select {
+  font-family: 'FontAwesome', 'Second Font name'
+}
