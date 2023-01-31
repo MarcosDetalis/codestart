@@ -39,22 +39,7 @@ function App() {
 
   return (
     <div>
-      <input
-        type="text"
-        ref={buscarpersonaje}
-        onChange={buscar}
-        onKeyDown={buscarIntro}
-        placeholder="Buscar personaje"
-      />
-
-      <ul>
-        {personajes.map((personaje) => (
-          <li key={personaje.name} onClick={() => MostarDetalle(personaje)}>
-            {personaje.name}
-          </li>
-        ))}
-      </ul>
-   
+    
       <select name="" id="">
         {personajes.map((personaje) => (
           <option key={personaje.name} onClick={() => MostarDetalle(personaje)}>&#xf2be;
@@ -66,6 +51,14 @@ function App() {
         
       </select>
 
+  <input
+        type="text"
+        ref={buscarpersonaje}
+        onChange={buscar}
+        onKeyDown={buscarIntro}
+        placeholder="Buscar personaje"
+      />
+      
       {detalles && (
         <aside>
           <h1>{detalles.name}</h1>
