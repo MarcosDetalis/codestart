@@ -57,11 +57,13 @@ function App() {
    
       <select name="" id="">
         {personajes.map((personaje) => (
-          <option key={personaje.name} onClick={() => MostarDetalle(personaje)}>
+          <option key={personaje.name} onClick={() => MostarDetalle(personaje)}>&#xf2be;
             {personaje.name}
           </option>
+
+            
         ))}
-        c
+        
       </select>
 
       {detalles && (
