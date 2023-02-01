@@ -79,16 +79,14 @@ function App() {
           <Route
             path="/op"
             render={(props) => <DetailDogComponent {...props} />}
-          >
-
-          </Route>      
-            </BrowserRouter>
+          ></Route>
+        </BrowserRouter>
       </div>
 
-      <div class="row g-3">
-        <div class="col-auto">
+      <div className="row g-3">
+        <div className="col-auto">
           <select
-            class="form-select form-select-lg mb-2"
+            className="form-select form-select-lg mb-2"
             aria-label=".form-select-lg example"
           >
             {personajes.map((personaje) => (
@@ -102,21 +100,20 @@ function App() {
             ))}
           </select>
         </div>
-        <div class="col-auto ">
+        <div className="col-auto ">
           <label>id</label>
           <input
             type="text"
             readonly
-            class="form-control-plaintext"
+            className="form-control-plaintext border border-secondary-subtle p-2"
             ref={buscarpersonaje}
             onChange={buscar}
             onKeyDown={buscarIntro}
             placeholder="Buscar personaje"
-            className="border border-secondary-subtle p-2"
           />
         </div>
-        <div class="col-auto">
-          <button type="button" class="btn btn-outline-success">
+        <div className="col-auto">
+          <button type="button" className="btn btn-outline-success">
             Enviar consulta
           </button>
         </div>
