@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Redirect, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { useState, useEffect, useRef } from "react";
 import { getPersojes, getSelecPersonaje } from "./ api /service";
@@ -75,13 +75,27 @@ function App() {
       )} */}
 
       <div className="App">
-        <BrowserRouter>
-          <Route
-            path="/op"
-            render={(props) => <DetailDogComponent {...props} />}
-          ></Route>
-        </BrowserRouter>
+        
+          <Router>
+            <div>
+              <ul>
+                <li>
+                  <Link to="/about">Main page</Link>
+                </li>
+              </ul>
+            </div>
+
+            <Switch>
+              <Route path="/about">
+                <Listpersonas />
+              </Route>
+            </Switch>
+            
+          </Router>
+
       </div>
+
+
 
       <div className="row g-3">
         <div className="col-auto">
