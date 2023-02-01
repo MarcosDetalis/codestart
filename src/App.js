@@ -1,7 +1,9 @@
 import "./App.css";
+import { BrowserRouter, Route } from "react-router-dom";
+
 import { useState, useEffect, useRef } from "react";
-import { getBusqueda, getPersojes, getSelecPersonaje } from "./ api /service";
- 
+import {   getPersojes, getSelecPersonaje } from "./ api /service";
+ import DetailDogComponent from "./componentes/DetailDogComponent"
 
 function App() {
   const buscarpersonaje = useRef(null);
@@ -73,7 +75,18 @@ function App() {
           <h4> color de pelo: {detalles.hair_color}</h4>
           <h5> Edad :{detalles.birth_year}</h5>
         </aside>
-      )} 
+      )}
+
+      {/*  */}
+
+      <div className="App">
+        <BrowserRouter>
+          <Route
+            path="/dogs/:id"
+            render={(props) => <DetailDogComponent {...props} />}
+          />
+        </BrowserRouter>
+      </div>
     </div>
   );
 }
