@@ -105,7 +105,7 @@ function App() {
           <input
             type="text"
             readonly
-            className="form-control-plaintext border border-secondary-subtle p-2"
+            className="border border-secondary-subtle p-2"
             ref={buscarpersonaje}
             onChange={buscar}
             onKeyDown={buscarIntro}
