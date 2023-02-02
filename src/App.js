@@ -1,11 +1,8 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+//import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { getPersojes, getSelecPersonaje } from "./ api /service";
-import DetailDogComponent from "./componentes/DetailDogComponent";
-import Listpersonas from "./componentes/Listpersonas";
-
+ 
 function App() {
   const buscarpersonaje = useRef(null);
   const [personajes, setPersonaje] = useState([]);
@@ -22,10 +19,9 @@ function App() {
   }, [selecpersonaje]);
 
   const MostarDetalle = (personaje) => {
+    console.log("first")
     const id = Number(personaje.url.split("/").slice(-2)[0]);
-
     console.log(personaje);
-
     setSelecPersonaje(id);
   };
 
@@ -33,6 +29,7 @@ function App() {
     e.preventDefault();
     const text = buscarpersonaje.current.value;
     settextBuscar(text);
+   
   };
 
   const buscarIntro = (e) => {
@@ -42,62 +39,14 @@ function App() {
 
     // getBusqueda(textBuscar).then((data) => setPersonaje(data.results));
     setSelecPersonaje(textBuscar);
+    
   };
 
   return (
     <div className="m-3">
-      {/* 
-      <select>
-        {personajes.map((personaje) => (
-          <option key={personaje.name} onClick={() => MostarDetalle(personaje)}>
-            &#xf2be;
-            {personaje.name}
-          </option>
-        ))}
-      </select>
-
-      <input
-        type="text"
-        ref={buscarpersonaje}
-        onChange={buscar}
-        onKeyDown={buscarIntro}
-        placeholder="Buscar personaje"
-      />
-
-      {detalles && (
-        <aside>
-          <h1>{detalles.name}</h1>
-          <h2>Altura:{detalles.height}</h2>
-          <h3>Masa: {detalles.mass}</h3>
-          <h4> color de pelo: {detalles.hair_color}</h4>
-          <h5> Edad :{detalles.birth_year}</h5>
-        </aside>
-      )} */}
-
-      <div className="App">
-        
-          <Router>
-            <div>
-              <ul>
-                <li>
-                  <Link to="/about">Main page</Link>
-                </li>
-              </ul>
-            </div>
-
-            <Switch>
-              <Route path="/about">
-                <Listpersonas />
-              </Route>
-            </Switch>
-            
-          </Router>
-
-      </div>
-
-
-
+     
       <div className="row g-3">
+
         <div className="col-auto">
           <select
             className="form-select form-select-lg mb-2"
@@ -114,11 +63,14 @@ function App() {
             ))}
           </select>
         </div>
+
+
+
         <div className="col-auto ">
           <label>id</label>
           <input
             type="text"
-            readonly
+           readOnly
             className="border border-secondary-subtle p-2"
             ref={buscarpersonaje}
             onChange={buscar}
@@ -126,11 +78,13 @@ function App() {
             placeholder="Buscar personaje"
           />
         </div>
+
         <div className="col-auto">
           <button type="button" className="btn btn-outline-success">
             Enviar consulta
           </button>
         </div>
+
       </div>
 
       {detalles && (
@@ -141,7 +95,8 @@ function App() {
           <h4> color de pelo: {detalles.hair_color}</h4>
           <h5> Edad :{detalles.birth_year}</h5>
         </aside>
-      )}
+      )} 
+
     </div>
   );
 }
